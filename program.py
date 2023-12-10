@@ -17,7 +17,9 @@ minal_img = face_recognition.load_image_file("faces/minal.jpeg")
 minal_encoding = face_recognition.face_encodings(minal_img)[0]
 
 known_face_encodings = [sachin_encoding, raj_encoding, minal_encoding]
-known_face_names = [sachin_img, raj_img, minal_img]
+# known_face_names = [sachin_img, raj_img, minal_img]
+known_face_names = ["Sachin", "Raj", "Minal"]
+
 
 # List of expected students
 students = known_face_names.copy()
@@ -34,7 +36,9 @@ lnwriter = csv.writer(f)
 while True:
     _, frame = video_capture.read()
     small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
-    rgb_small_frame = cv2.cvtColor(small_frame, cv2.COLOR_BGR2GRAY)
+#     rgb_small_frame = cv2.cvtColor(small_frame, cv2.COLOR_BGR2GRAY)
+    rgb_small_frame = cv2.cvtColor(small_frame, cv2.COLOR_BGR2RGB)
+
 
     # Recognize face
     face_locations = face_recognition.face_locations(rgb_small_frame)
