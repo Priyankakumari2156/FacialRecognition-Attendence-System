@@ -67,8 +67,10 @@ while True:
                 current_time = now.strftime("%H-%M:%S")
                 lnwriter.writerow([name, current_time])
 
-        cv2.imshow("Attendence ", frame)
-        if cv2.waitKey(1) & 0xFF == ord("q"):
+        cv2.imshow("Attendence", frame)
+        k = cv2.waitKey(1)
+        if k == ord('q'):
             break
+        
 video_capture.release()
 cv2.destroyWindow()
